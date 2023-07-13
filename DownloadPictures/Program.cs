@@ -31,6 +31,7 @@ namespace DownloadPictures
         protected static void CancelHandler(object sender, ConsoleCancelEventArgs args)
         {
             CancelOperations();
+            Thread.Sleep(3000);
             args.Cancel = true;
         }
 
@@ -42,14 +43,12 @@ namespace DownloadPictures
             ClearFiles();
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.White;
+
             Console.WriteLine("İptal işlemi tamamlandı. Proğramı kapatmak için lütfen tekrar ctrl+c kombinasyonuna basınız.");
         }
 
-        private static void ClearFiles()
-        {
-            DirectoryInfo di = new DirectoryInfo(GetSettings<DownloadSettings>("DownloadSettings").SavePath);
-            di.Delete(false);
-        }
+        private static void ClearFiles() => Directory.Delete(GetSettings<DownloadSettings>("DownloadSettings").SavePath, true);
+
 
         /// <summary>
         /// Resimleri indiren methoddur.Parallel olarak çalışır. Thread.Sleep ifadesi proggress ilerlemesini daha net 
