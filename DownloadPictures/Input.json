@@ -1,0 +1,8 @@
+{
+  "DownloadSettings": {
+    "Count": 200,
+    "Parallelism": 5,
+    "SavePath": "./outputs",
+    "Url": "https://picsum.photos/200/300"
+  }
+}
